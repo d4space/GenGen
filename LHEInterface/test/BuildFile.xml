@@ -1,0 +1,8 @@
+<library   file="higgsLHEAnalyzer.cc">
+  <use   name="PhysicsTools/HepMCCandAlgos"/>
+  <use   name="SimDataFormats/GeneratorProducts"/>
+  <use   name="FWCore/Framework"/>
+  <use name="PhysicsTools/UtilAlgos"/>
+  <use name="FWCore/ServiceRegistry"/>
+  <flags   EDM_PLUGIN="1"/>
+</library>
