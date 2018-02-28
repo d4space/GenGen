@@ -8,9 +8,9 @@ massGrid = {'gghWW2l2n': [700, 800, 900, 1000, 1500, 2000, 2500, 3000],
 
 
 massGrid['vbfhWWlnuqq']= [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650, 700, 750, 800, 900, 1000, 1500, 2000, 2500, 3000]
+massGrid['ggHJJWW2l2n']= [125]
 
-
-key='vbfhWWlnuqq'
+key='ggHJJWW2l2n'
 
 
 targetDir = key+ 'TopFiles'
@@ -32,7 +32,7 @@ for mass in massGrid[key]:
     tg_rmngrid = key+str(mass)+'_'+'pwg_rmngrid.top'
     if not os.path.isfile(f_rmngrid):
         print "file not exists: ",f_rmngrid
-        exit()
+    #    exit()
     cmd = 'cp'+' '+f_rmngrid+' '+targetDir+'/'+tg_rmngrid
     print cmd
     if doCmd == 1:
