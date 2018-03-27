@@ -8,14 +8,14 @@ process.maxEvents = cms.untracked.PSet( input = cms.untracked.int32(-1) )
 
 process.source = cms.Source("PoolSource",
     # replace 'myfile.root' with the source file you want to use
-    fileNames = cms.untracked.vstring('file:MCDBtoEDM_NONE.root')
+    fileNames = cms.untracked.vstring('file:MCDBtoEDM_ggh_0L1_WW2l2n_M125_jhu710.root')
     #fileNames = cms.untracked.vstring(
     #    'file:myfile.root'
     #)
 )
 
 process.TFileService = cms.Service("TFileService",
-    fileName = cms.string("higgsLHEAnal.root"),
+    fileName = cms.string("ggh_0L1_WW2l2n_LHEAnal.root"),
     #closeFileFast = cms.untracked.bool(True)
     )
 
