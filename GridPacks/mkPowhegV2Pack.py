@@ -73,6 +73,9 @@ massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650
 #
 #    print cmd
 #    os.system(cmd)
+
+
+
 #########################
 # one go
 #########################
@@ -87,37 +90,44 @@ massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650
 #    os.system(cmd)
 #
 
+####################################
+# Anomalous coupling
+####################################
 
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus.input -m gg_H_quark-mass-effects -f ggh_0PM_WW2l2n_M125_jhu710 -q 1nd -n 1000'
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus.input -m gg_H_quark-mass-effects -f ggh_0PM_WW2l2n_M125_jhu710 -q 1nd -n 1000'
+#print cmd
+#os.system(cmd)
+#
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_a3.input -m gg_H_quark-mass-effects -f ggh_0M_WW2l2n_M125_jhu710 -q 1nd -n 1000'
+#print cmd
+#os.system(cmd)
+#
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_a3mix.input -m gg_H_quark-mass-effects -f ggh_0Mf05ph0_WW2l2n_M125_jhu710 -q 1nd -n 1000'
+#print cmd
+#os.system(cmd)
+#
+#
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_a2.input -m gg_H_quark-mass-effects -f ggh_0PH_WW2l2n_M125_jhu710 -q 1nd -n 1000'
+#print cmd
+#os.system(cmd)
+#
+#
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_a2mix.input -m gg_H_quark-mass-effects -f ggh_0PHf05ph0_WW2l2n_M125_jhu710 -q 1nd -n 1000'
+#print cmd
+#os.system(cmd)
+#
+#
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_L1.input -m gg_H_quark-mass-effects -f ggh_0L1_WW2l2n_M125_jhu710 -q 1nd -n 1000'
+#print cmd
+#os.system(cmd)
+#
+#
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_L1mix.input -m gg_H_quark-mass-effects -f ggh_0L1f05ph0_WW2l2n_M125_jhu710 -q 1nd -n 1000'
+#print cmd
+#os.system(cmd)
+
+
+cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/WZTo3lNu_NNPDF31nnlo_13TeV/WZ_lllnu_mllmin01_NNPDF31nnlo_13TeV.input -m WZ -f WZTo3LNu_mllmin01_NNPDF31_TuneCP5_13TeV_powheg_pythia8 -q 1nd -n 1000'
 print cmd
 os.system(cmd)
-
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_a3.input -m gg_H_quark-mass-effects -f ggh_0M_WW2l2n_M125_jhu710 -q 1nd -n 1000'
-print cmd
-os.system(cmd)
-
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_a3mix.input -m gg_H_quark-mass-effects -f ggh_0Mf05ph0_WW2l2n_M125_jhu710 -q 1nd -n 1000'
-print cmd
-os.system(cmd)
-
-
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_a2.input -m gg_H_quark-mass-effects -f ggh_0PH_WW2l2n_M125_jhu710 -q 1nd -n 1000'
-print cmd
-os.system(cmd)
-
-
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_a2mix.input -m gg_H_quark-mass-effects -f ggh_0PHf05ph0_WW2l2n_M125_jhu710 -q 1nd -n 1000'
-print cmd
-os.system(cmd)
-
-
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_L1.input -m gg_H_quark-mass-effects -f ggh_0L1_WW2l2n_M125_jhu710 -q 1nd -n 1000'
-print cmd
-os.system(cmd)
-
-
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M125.input -g ../JHUGen/cards/decay/anomalouscouplings/WW2l2nu_withtaus_L1mix.input -m gg_H_quark-mass-effects -f ggh_0L1f05ph0_WW2l2n_M125_jhu710 -q 1nd -n 1000'
-print cmd
-os.system(cmd)
-
 
