@@ -2,7 +2,8 @@ import os
 
 ########### All
 
-massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650, 700, 750, 800, 900, 1000, 1500, 2000, 2500, 3000]
+massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650, 700, 750, 800, 900, 1000, 1500, 2000, 2500, 3000],
+            'ggZHWW': [120, 125, 130]
             }
 
 
@@ -89,6 +90,12 @@ massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650
 #    print cmd
 #    os.system(cmd)
 #
+#for mass in massGrid['ggZHWW']:
+#  print mass
+#  cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/ggHZ_HanythingJ_NNPDF31_13TeV/ggHZ_HanythingJ_NNPDF31_13TeV_M'+str(mass)+'_Vinclusive.input  -m ggHZ -f ggHZ_Hanything_NNPDF31_13TeV_'+str(mass)+' -q 1nw -n 1000'
+#
+#  print cmd
+#  os.system(cmd)
 
 ####################################
 # Anomalous coupling
@@ -127,7 +134,10 @@ massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650
 #os.system(cmd)
 
 
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/WZTo3lNu_NNPDF31nnlo_13TeV/WZ_lllnu_mllmin01_NNPDF31nnlo_13TeV.input -m WZ -f WZTo3LNu_mllmin01_NNPDF31_TuneCP5_13TeV_powheg_pythia8 -q 1nd -n 1000'
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/WZTo3lNu_NNPDF31nnlo_13TeV/WZ_lllnu_mllmin01_NNPDF31nnlo_13TeV.input -m WZ -f WZTo3LNu_mllmin01_NNPDF31_TuneCP5_13TeV_powheg_pythia8 -q 1nd -n 1000'
+#print cmd
+#os.system(cmd)
+
+cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/ggHZ_HanythingJ_NNPDF31_13TeV/ggHZ_HanythingJ_NNPDF31_13TeV_M125_Vleptonic.input -m ggHZ -f ggHZ_HanythingJ_NNPDF31_13TeV_M125_Vleptonic -q 1nw -n 1000'
 print cmd
 os.system(cmd)
-
