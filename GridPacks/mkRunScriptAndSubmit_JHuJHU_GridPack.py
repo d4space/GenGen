@@ -100,7 +100,8 @@ for key in ZH:
   f.write("cd /afs/cern.ch/user/s/salee/WorkSpace/private/PowhegV2/CMSSW936ptch2/src/\n")
   f.write("eval `scramv1 runtime -sh`\n")
   f.write("cd /afs/cern.ch/user/s/salee/WorkSpace/private/PowhegV2/CMSSW936ptch2/src/genproductions/bin/JHUGen\n")
-  f.write("./install_multi.py --card "+prodCard+" --decay-card "+decayCard+" --name "+name+"\n")
+  f.write("./install.py --card "+prodCard+" --decay-card "+decayCard+" --name "+name+"\n") # install_multi copied to install and PR
+  #f.write("./install_multi.py --card "+prodCard+" --decay-card "+decayCard+" --name "+name+"\n")
   f.close()
   cmd = "chmod u+x "+fileName
   os.system(cmd)

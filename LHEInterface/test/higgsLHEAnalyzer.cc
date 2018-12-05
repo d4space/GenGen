@@ -12,6 +12,8 @@
 #include "FWCore/ServiceRegistry/interface/Service.h"
 #include "CommonTools/UtilAlgos/interface/TFileService.h"
 
+#include "TLorentzVector.h"
+
 #include <iomanip>
 #include <iostream>
 using namespace std;
@@ -22,7 +24,11 @@ class higgsLHEAnalyzer : public EDAnalyzer {
 private: 
   bool dumpLHE_;
   bool checkPDG_;
-  TH1F * h_hMass;
+  TH1F * h_Mass;
+  TH1F * h_longMass;
+  TH1F * h_diEMass;
+  TH1F * h_diMuMass;
+  int id6, id7;
 public:
   explicit higgsLHEAnalyzer( const ParameterSet & cfg ) : 
     src_( cfg.getParameter<InputTag>( "src" ) ),
@@ -30,7 +36,10 @@ public:
     tokenLHEEvent_(consumes<LHEEventProduct>(cfg.getUntrackedParameter<edm::InputTag>("moduleLabel", std::string("source")) ) )
   {
     edm::Service<TFileService> fs;
-    h_hMass    = fs->make<TH1F>( "hMass"  , "M_{h}", 100,  124.5, 125.5 );
+    h_Mass    = fs->make<TH1F>( "h_Mass"  , "mll", 50,  0, 1 );
+    h_diEMass    = fs->make<TH1F>( "h_diEMass"  , "mll", 50,  0, 1 );
+    h_diMuMass    = fs->make<TH1F>( "h_diMuMass"  , "mll", 50,  0, 1 );
+    h_longMass    = fs->make<TH1F>( "h_longMass"  , "mll", 100,  0, 100 );
     //h_eta   = fs->make<TH1F>( "eta" , "#eta" , 50, -3, 3 );
   }
 private:
@@ -40,6 +49,9 @@ private:
     //iEvent.getByLabel(src_, evt);
     iEvent.getByToken(tokenLHEEvent_, evt);
 
+    TLorentzVector l1_tlov4;
+    TLorentzVector l2_tlov4;
+    TLorentzVector diLep_tlov4;
     const lhef::HEPEUP hepeup_ = evt->hepeup();
 
     const int nup_ = hepeup_.NUP; 
@@ -60,18 +72,51 @@ private:
 
     for ( unsigned int icount = 0 ; icount < (unsigned int)nup_; icount++ ) {
 
-      std::cout << "# " << std::setw(14) << std::fixed << icount 
-                << std::setw(14) << std::fixed << idup_[icount] 
-                << std::setw(14) << std::fixed << (pup_[icount])[0] 
-                << std::setw(14) << std::fixed << (pup_[icount])[1] 
-                << std::setw(14) << std::fixed << (pup_[icount])[2] 
-                << std::setw(14) << std::fixed << (pup_[icount])[3] 
-                << std::setw(14) << std::fixed << (pup_[icount])[4] 
-                << std::endl;
-      if(idup_[icount] == 25 ){
-	h_hMass->Fill((pup_[icount])[4]); 
+      //std::cout << "# " << std::setw(14) << std::fixed << icount 
+      //          << std::setw(14) << std::fixed << idup_[icount] 
+      //          << std::setw(14) << std::fixed << hepeup_.ISTUP.at(icount)
+      //          << std::setw(14) << std::fixed << (pup_[icount])[0]  //px
+      //          << std::setw(14) << std::fixed << (pup_[icount])[1]  //py
+      //          << std::setw(14) << std::fixed << (pup_[icount])[2]  //pz
+      //          << std::setw(14) << std::fixed << (pup_[icount])[3]  //e
+      //          << std::setw(14) << std::fixed << (pup_[icount])[4]  //mass
+      //          << std::endl;
+      //if(icount == 6 || icount == 7){
+      //  if(hepeup_.ISTUP.at(icount) !=1) exit(-1);
+      //  std::cout << "# " << std::setw(14) << std::fixed << icount
+      //    << std::setw(14) << std::fixed << idup_[icount]
+      //    << std::setw(14) << std::fixed << hepeup_.ISTUP.at(icount)
+      //    << std::setw(14) << std::fixed << (pup_[icount])[0]  //px
+      //    << std::setw(14) << std::fixed << (pup_[icount])[1]  //py
+      //    << std::setw(14) << std::fixed << (pup_[icount])[2]  //pz
+      //    << std::setw(14) << std::fixed << (pup_[icount])[3]  //e
+      //    << std::setw(14) << std::fixed << (pup_[icount])[4]  //mass
+      //    << std::endl;
+
+      //}
+      //
+      if(icount == 6 ){
+	id6=idup_[icount];
+	l1_tlov4.SetPxPyPzE((pup_[icount])[0] ,(pup_[icount])[1],(pup_[icount])[2],(pup_[icount])[3] );
+      }
+      if(icount == 7 ){
+	id7=idup_[icount];
+	l2_tlov4.SetPxPyPzE((pup_[icount])[0] ,(pup_[icount])[1],(pup_[icount])[2],(pup_[icount])[3] );
+      }
+      if(idup_[icount] == 23 ){
+      //if(idup_[icount] == 25 ){
+	//h_hMass->Fill((pup_[icount])[4]); 
       }
     }
+    diLep_tlov4 = l1_tlov4+l2_tlov4;
+    //std::cout<<std::setw(14) << diLep_tlov4.M()  //mass
+     // << std::endl;
+    h_Mass->Fill(diLep_tlov4.M()); 
+    h_longMass->Fill(diLep_tlov4.M()); 
+    if(id6*id7 == -11*11) h_diEMass->Fill(diLep_tlov4.M());
+    if(id6*id7 == -13*13) h_diMuMass->Fill(diLep_tlov4.M());
+
+
     //if( evt->weights().size() ) {
     //  std::cout << "weights:" << std::endl;
     //  for ( size_t iwgt = 0; iwgt < evt->weights().size(); ++iwgt ) {

@@ -1,9 +1,23 @@
+
+# Definition of the input parameters:
+# (1) -p grid production stage [f]  (one go)
+# (2) -i intput card name [powheg.input]
+# (3) -m process name (process defined in POWHEG)
+# (4) -f working folder [my_ggH]
+# (5) -q batch queue name (run locally if not specified)
+# (6) -n the number of events to run
+
+
 import os
 
 ########### All
 
 massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650, 700, 750, 800, 900, 1000, 1500, 2000, 2500, 3000],
-            'ggZHWW': [120, 125, 130]
+	    'VBfHWW2L2Nu': [140,  175, 350, 1000, 2000],
+	    #'VBfHWW2L2Nu': [115, 120, 124, 125, 126, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 190,200,210,230,270, 300,350,450,500,550,600,650,700,800,900,1000,1500,2000,2500,3000],
+            'ggZHWW': [120, 125, 130],
+	    'HZJ': [120, 125, 130],
+	    'ggHToWW2L2Nu': [115, 120, 124, 125, 126, 130, 135, 140, 145, 150, 155, 160, 165, 170, 175, 180, 190, 300, 650],
             }
 
 
@@ -80,6 +94,18 @@ massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650
 #########################
 # one go
 #########################
+#
+#for mass in massGrid['VBfHWW2L2Nu']:
+#    print mass
+#    if mass < 300 :
+#        cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/VBF_H_WW_NNPDF31_13TeV/VBF_H_WW_NNPDF31_13TeV_M'+str(mass)+'.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus.input -m VBF_H -f VBfHWW2L2Nu'+str(mass)+' -q 1nd -n 100'
+#    else :
+#        cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/VBF_H_WW_NNPDF31_13TeV/VBF_H_WW_NNPDF31_13TeV_M'+str(mass)+'.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus_reweightdecay_CPS.input -m VBF_H -f VBfHWW2L2Nu'+str(mass)+' -q 1nd -n 100'
+#
+#    print cmd
+#    os.system(cmd)
+#
+#
 #for mass in massGrid['VBFhWWlnuqq']:
 #    print mass
 #    if mass < 300 :
@@ -90,12 +116,48 @@ massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650
 #    print cmd
 #    os.system(cmd)
 #
+# option -d 1: no pdf check
+#cmd = 'python ./run_pwg.py  -d 1 -p f -i production/pre2017/14TeV/VBF_H_WW_NNPDF30_14TeV/VBF_H_WW_NNPDF30_14TeV_M125.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus.input -m VBF_H -f vbfhWW2l2nu_NNPDF30_14TeV_125 -q 1nd -n 1000'
+#
+#print cmd
+#os.system(cmd)
+
+#for mass in massGrid['ggHToWW2L2Nu']:
+#  #print mass
+#  if mass < 300 :
+#      cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M'+str(mass)+'.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus.input -m gg_H_quark-mass-effects -f gghWW2l2nu'+str(mass)+' -q 1nd -n 100'
+#  else :
+#      cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/gg_H_WW_quark-mass-effects_NNPDF31_13TeV/gg_H_WW_quark-mass-effects_NNPDF31_13TeV_M'+str(mass)+'.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus_reweightdecay_CPS.input -m gg_H_quark-mass-effects -f gghWW2l2nu'+str(mass)+' -q 1nd -n 100'
+#
+#  print cmd
+#  os.system(cmd)
+#
+
+
 #for mass in massGrid['ggZHWW']:
 #  print mass
 #  cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/ggHZ_HanythingJ_NNPDF31_13TeV/ggHZ_HanythingJ_NNPDF31_13TeV_M'+str(mass)+'_Vinclusive.input  -m ggHZ -f ggHZ_Hanything_NNPDF31_13TeV_'+str(mass)+' -q 1nw -n 1000'
 #
 #  print cmd
 #  os.system(cmd)
+
+#for mass in massGrid['HZJ']:
+#  #if mass != 120: continue
+#  print mass
+#  # HToWW
+#  cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/HZJ_HanythingJ_NNPDF31_13TeV/HZJ_HanythingJ_NNPDF31_13TeV_M'+str(mass)+'_Vinc.input -g ../JHUGen/cards/decay/WWany.input  -m HZJ -f HZJ_HWWany_NNPDF31_13TeV_'+str(mass)+'_Vinc_JHU714 '+' -q 1nw -n 10'
+#  print cmd
+#  os.system(cmd)
+#
+#  # HToWWTo2L2Nu
+#  cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/HZJ_HanythingJ_NNPDF31_13TeV/HZJ_HanythingJ_NNPDF31_13TeV_M'+str(mass)+'_Vinc.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus.input  -m HZJ -f HZJ_HWWTo2L2Nu_NNPDF31_13TeV_'+str(mass)+'_Vinc_JHU714'+' -q 1nw -n 10'
+#  print cmd
+#  os.system(cmd)
+#
+#  # HToWWTo2L2Nu_ZTo2L
+#  #cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/HZJ_HanythingJ_NNPDF31_13TeV/HZJ_HanythingJ_NNPDF31_13TeV_M'+str(mass)+'_Vleptonic.input -g ../JHUGen/cards/decay/WW2l2nu_withtaus.input  -m HZJ -f HZJ_HWWTo2L2Nu_NNPDF31_13TeV_'+str(mass)+'_Vleptonic_JHU714 '+' -q 1nw -n 10'
+#  #print cmd
+#  #os.system(cmd)
 
 ####################################
 # Anomalous coupling
@@ -138,6 +200,11 @@ massGrid = {'VBFhWWlnuqq': [125, 200, 250, 300, 350, 400, 450, 500, 550,600, 650
 #print cmd
 #os.system(cmd)
 
-cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/ggHZ_HanythingJ_NNPDF31_13TeV/ggHZ_HanythingJ_NNPDF31_13TeV_M125_Vleptonic.input -m ggHZ -f ggHZ_HanythingJ_NNPDF31_13TeV_M125_Vleptonic -q 1nw -n 1000'
+
+cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/WZTo3lNu_NNPDF31nnlo_13TeV/WZ_lllnu_mllmin0001max1_NNPDF31nnlo_13TeV.input -m WZ -f WZTo3LNu_mllmin0001max1_NNPDF31_TuneCP5_13TeV_powheg_pythia8 -q 1nd -n 100'
 print cmd
 os.system(cmd)
+
+#cmd = 'python ./run_pwg.py -p f -i production/2017/13TeV/Higgs/ggHZ_HanythingJ_NNPDF31_13TeV/ggHZ_HanythingJ_NNPDF31_13TeV_M125_Vleptonic.input -m ggHZ -f ggHZ_HanythingJ_NNPDF31_13TeV_M125_Vleptonic -q 1nw -n 1000'
+#print cmd
+#os.system(cmd)
