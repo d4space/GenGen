@@ -24,7 +24,7 @@ mcm = McM(dev=False)
 
 # Example how to get multiple requests using range
 requests_query = """
-    HIG-RunIIFall17wmLHEGS-02442 -> HIG-RunIIFall17wmLHEGS-02477
+    HIG-RunIIFall17wmLHEGS-01712 -> HIG-RunIIFall17wmLHEGS-01714
 """
 range_of_requests = mcm.get_range_of_requests(requests_query)
 print('Found %s requests' % (len(range_of_requests)))
